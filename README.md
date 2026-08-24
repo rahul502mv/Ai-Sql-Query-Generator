@@ -1,57 +1,63 @@
-# AI SQL Query Generator
+# 🤖 AI SQL Query Generator
 
-An AI-powered SQL Query Generator that converts natural-language questions into SQL queries using the OpenAI API, executes the generated SQL, and provides easy-to-understand business insights.
+An AI-powered SQL Query Generator that converts **natural-language questions into SQL queries** using the **Groq API and Llama 3.3 70B**, executes the generated SQL, and generates easy-to-understand business insights.
 
-## 🚀 Project Overview
+## 📌 Project Overview
 
-The **AI SQL Query Generator** allows users to interact with a database using natural language instead of writing SQL manually.
+The **AI SQL Query Generator** allows users to interact with a database using natural language instead of manually writing SQL queries.
 
-For example:
+For example, a user can ask:
 
 > "Show me the top 5 customers by total sales."
 
-The application uses an AI model to understand the question and generate the appropriate SQL query.
+The application understands the question, generates the appropriate SQL query using **Groq's Llama 3.3 70B model**, executes the query, and presents the results along with a business insight.
 
-### Workflow
+## 🔄 How It Works
 
 ```text
 User Question
       ↓
-Natural Language Processing
+Natural Language Input
       ↓
-OpenAI API
+Groq API
+      ↓
+Llama 3.3 70B
       ↓
 SQL Query Generation
       ↓
-SQL Validation / Execution
+SQL Execution
       ↓
-Database Results
+Query Results
       ↓
-AI Business Insight
+AI Insight Generation
       ↓
-Streamlit Dashboard
+Business-Friendly Output
 ```
 
 ## ✨ Features
 
-* Convert natural-language questions into SQL
-* Generate SQL using OpenAI
-* Execute generated SQL against the database
-* Display SQL query and query results
-* Generate business-friendly insights from query results
-* Interactive Streamlit interface
-* Environment-variable based API key configuration
-* Easy local setup and deployment
+* 🗣️ Ask database questions using natural language
+* 🤖 Generate SQL queries using Groq AI
+* ⚡ Uses Llama 3.3 70B Versatile
+* 🗄️ Execute generated SQL queries
+* 📊 Display query results
+* 💡 Generate business insights from query results
+* 🖥️ Interactive Streamlit interface
+* 🔐 Secure API key management using `.env`
+* 🐍 Built completely with Python
 
 ## 🛠️ Technologies Used
 
-* **Python**
-* **OpenAI API**
-* **Streamlit**
-* **Pandas**
-* **SQLite / SQL Database**
-* **python-dotenv**
-* **Git & GitHub**
+| Technology                  | Purpose                                       |
+| --------------------------- | --------------------------------------------- |
+| **Python**                  | Core programming language                     |
+| **Groq API**                | AI inference                                  |
+| **Llama 3.3 70B Versatile** | Natural language → SQL and insight generation |
+| **SQL**                     | Database querying                             |
+| **Streamlit**               | Web application interface                     |
+| **Pandas**                  | Data processing                               |
+| **python-dotenv**           | Environment variable management               |
+| **Git & GitHub**            | Version control                               |
 
 ## 📁 Project Structure
 
@@ -71,7 +77,20 @@ Ai-Sql-Query-Generator/
 └── ...
 ```
 
-> The exact files may vary depending on the current project implementation.
+## 🧠 AI Model
+
+This project uses the **Groq API** with:
+
+```text
+Model: llama-3.3-70b-versatile
+```
+
+The model is used for:
+
+1. Understanding the user's natural-language question
+2. Generating SQL queries
+3. Analyzing SQL query results
+4. Producing concise business insights
 
 ## ⚙️ Installation
 
@@ -81,13 +100,11 @@ Ai-Sql-Query-Generator/
 git clone https://github.com/rahul502mv/Ai-Sql-Query-Generator.git
 ```
 
-Move into the project directory:
+Navigate to the project:
 
 ```bash
 cd Ai-Sql-Query-Generator
 ```
-
-If the application is inside a subdirectory, move into that directory as required.
 
 ### 2. Create a virtual environment
 
@@ -97,7 +114,7 @@ Windows:
 python -m venv .venv
 ```
 
-Activate it:
+Activate the environment:
 
 ```powershell
 .venv\Scripts\activate
@@ -109,21 +126,21 @@ Activate it:
 pip install -r requirements.txt
 ```
 
-## 🔑 OpenAI API Configuration
+## 🔑 Groq API Configuration
 
 Create a `.env` file in the project root:
 
 ```env
-OPENAI_API_KEY=your_openai_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
 ```
 
-You can use `.env.example` as a template.
+The application reads the API key from the environment variable.
 
-### Important
+### ⚠️ Security
 
-**Never commit your real API key to GitHub.**
+**Never upload your real API key to GitHub.**
 
-The `.gitignore` file should contain:
+Your `.gitignore` should contain:
 
 ```gitignore
 .env
@@ -132,15 +149,27 @@ __pycache__/
 *.pyc
 ```
 
+For other developers, provide:
+
+```text
+.env.example
+```
+
+with:
+
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
+
 ## ▶️ Running the Application
 
-Start the Streamlit application with:
+After activating the virtual environment and installing the dependencies:
 
 ```powershell
 streamlit run app.py
 ```
 
-If your Streamlit entry file is located somewhere else, use its correct path, for example:
+If your Streamlit application is inside the `src` directory:
 
 ```powershell
 streamlit run src/app.py
@@ -156,7 +185,7 @@ The application will open in your browser.
 Show me the top 5 customers by total sales.
 ```
 
-### Generated SQL
+### AI Generated SQL
 
 ```sql
 SELECT
@@ -168,80 +197,104 @@ ORDER BY total_sales DESC
 LIMIT 5;
 ```
 
-### Result
+### Query Result
 
-The application executes the generated SQL and displays the results in the Streamlit interface.
+The generated SQL is executed against the database and the results are displayed in the application.
 
-The AI can then convert the results into a business-friendly insight such as:
+### AI Business Insight
 
-```text
-The top five customers contribute a significant portion of total sales,
-with the highest-value customer generating the most revenue.
-```
+The application then uses Groq AI to transform the result into a simple business insight that can be understood by a non-technical user.
 
-## 🔐 Security
+## 🏗️ Core Components
 
-API keys and other sensitive configuration values should be stored in environment variables.
+### 1. SQL Generator
 
-Do not upload:
+The SQL generator receives:
 
-```text
-.env
-```
+* User question
+* Database schema
+* Relevant table information
 
-to GitHub.
+It sends the information to the **Groq Llama model** and generates the SQL query.
 
-Use:
+### 2. SQL Execution
 
-```text
-.env.example
-```
+The generated SQL query is executed against the connected database.
 
-for demonstrating the required environment variables.
+The results are returned as structured data.
+
+### 3. Insight Generator
+
+The query results are sent back to the Groq model.
+
+The AI analyzes the numbers and produces a short, decision-useful business insight.
 
 ## 🎯 Use Cases
 
 This project can be useful for:
 
-* Business analysts
-* Data analysts
-* SQL beginners
-* Business intelligence applications
-* Natural-language database interfaces
-* Automated reporting
-* Data exploration
+* 📊 Data Analysts
+* 💼 Business Analysts
+* 🧑‍💻 SQL Beginners
+* 📈 Business Intelligence
+* 🗄️ Database Exploration
+* 🤖 Generative AI Applications
+* 📋 Automated Business Reporting
 
-## 🔮 Future Improvements
+## 📚 Learning Objectives
 
-Possible future improvements include:
-
-* Support for PostgreSQL and MySQL
-* SQL query validation
-* Automatic database schema detection
-* Query history
-* Data visualization
-* Automatic chart generation
-* Multiple AI model support
-* User authentication
-* Deployment to Streamlit Cloud
-* Conversational database querying
-* Improved SQL safety and query restrictions
-
-## 📌 Learning Objectives
-
-This project demonstrates practical experience with:
+This project demonstrates practical knowledge of:
 
 * Generative AI
 * Large Language Models
-* OpenAI API integration
-* Prompt engineering
-* Natural-language-to-SQL systems
+* Groq API
+* Llama models
+* Prompt Engineering
+* Natural Language to SQL
 * Python
 * SQL
-* Database interaction
+* Database Integration
 * Streamlit
-* Environment variables
-* Git and GitHub
+* Pandas
+* Environment Variables
+* Git & GitHub
+
+## 🔮 Future Improvements
+
+* [ ] PostgreSQL support
+* [ ] MySQL support
+* [ ] Multiple database support
+* [ ] SQL query validation
+* [ ] Query history
+* [ ] Data visualization
+* [ ] Automatic chart generation
+* [ ] Conversational database querying
+* [ ] Database schema auto-detection
+* [ ] User authentication
+* [ ] Cloud deployment
+* [ ] Improved SQL security
+
+## 🔐 API Key Security
+
+Never commit your API key.
+
+❌ Do not upload:
+
+```text
+.env
+```
+
+✅ Upload:
+
+```text
+.env.example
+```
+
+Example:
+
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
 
 ## 👨‍💻 Author
 
@@ -249,8 +302,6 @@ This project demonstrates practical experience with:
 
 GitHub: [@rahul502mv](https://github.com/rahul502mv)
 
-If you find this project useful, consider giving the repository a ⭐ on GitHub.
+### 🚀 Built With
 
----
-
-**Built with Python, SQL, Streamlit, and OpenAI.**
+**Python • Groq API • Llama 3.3 70B • SQL • Streamlit • Pandas**

@@ -207,13 +207,7 @@ Add screenshots of the running app here before publishing to GitHub:
 
 ---
 
-## 👤 Author
+👨‍💻 Author
+RAHUL M
 
-**Sasikumar** — B.Tech Information Technology, Data Analytics & Data Science aspirant
-[LinkedIn](#) · [GitHub](#)
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
+GitHub: @rahul502mv

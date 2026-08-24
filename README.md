@@ -249,8 +249,6 @@ This project demonstrates practical experience with:
 
 GitHub: [@rahul502mv](https://github.com/rahul502mv)
 
-## ⭐ Support
-
 If you find this project useful, consider giving the repository a ⭐ on GitHub.
 
 ---
